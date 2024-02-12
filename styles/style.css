@@ -1,0 +1,25 @@
+body {
+    background-color: #211951;
+}
+
+.taskBox {
+    height: 900px;
+    background-color: #836fff;
+}
+
+.nameDiv {
+    margin-bottom: 3rem;
+    color: #F0f3ff;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 3rem 0px 3rem;
+    background-color: #F0f3ff;
+    color: #211951;
+}
+
+.mar {
+    margin-right: 25px;
+}
