@@ -65,7 +65,7 @@ progressTab.addEventListener('click', () => {
     taskRow2.classList.remove("hidden");
     progressTab.classList.add("active");
     taskRow1.classList.add("hidden");
-    progressTab.classList.remove("active");
+    todoTab.classList.remove("active");
 })
 
 todoTab.addEventListener('click', () => {
