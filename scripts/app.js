@@ -1,3 +1,5 @@
+import { addTodo } from "./addTasks.js";
+
 let saveBtn = document.getElementById("saveBtn");
 let date = document.getElementById("date");
 let taskName = document.getElementById("taskName");
@@ -13,13 +15,15 @@ let progressTab = document.getElementById("progressTab");
 let completedTab = document.getElementById("completedTab");
 
 saveBtn.addEventListener('click', () => {
-    if(date.value === "" || taskName.value === "" || taskDescription === ""){
+    if(date.value === "" || taskName.value === "" || taskDescription.value === ""){
         alert("Please fill in all information");
     } else {
         if(stat.value === "To-Do"){
-            alert("to");
+            addTodo(taskName.value, taskDescription.value, priority.value, date.value);
         } else {
             alert("pro");
         }
     }
 })
+
+export { taskRow1, taskRow2, taskRow3 }
