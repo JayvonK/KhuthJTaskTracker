@@ -1,5 +1,5 @@
 import { taskRow1, taskRow2, taskRow3, updatePage } from "./app.js"
-import { removeFromLocalStorageToDo, saveToLocalStorageToDo } from "./localStorage.js";
+import { removeFromLocalStorageToDo, saveToLocalStorageToDo, removeFromLocalStorageProgress, saveToLocalStorageProgress } from "./localStorage.js";
 
 const addTodo = (name, description, priority, date) => {
     let tName = document.createElement("h4");
@@ -177,8 +177,13 @@ const addTodo = (name, description, priority, date) => {
                 saveToLocalStorageToDo(ar);
                 updatePage();
             } else if(statSelect.value === "In Progress") {
-                card.remove();
-                console.log("progress");
+                let ar = [];
+                cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
+                cardSub.textContent = tDateInput.value;
+                cardtxt.textContent = tDescriptionInput.value;
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                saveToLocalStorageProgress(ar);
+                updatePage();
             } else {
                 card.remove();
                 console.log("complete");
@@ -358,7 +363,15 @@ const addProgress = (name, description, priority, date) => {
             alert("Please fill in all information");
         } else {
             if(statSelect.value === "In Progress"){
-                removeFromLocalStorageToDo(name);
+                removeFromLocalStorageProgress(name);
+                let ar = [];
+                cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
+                cardSub.textContent = tDateInput.value;
+                cardtxt.textContent = tDescriptionInput.value;
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                saveToLocalStorageProgress(ar);
+                updatePage();
+            } else if(statSelect.value === "To-Do") {
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
@@ -366,12 +379,8 @@ const addProgress = (name, description, priority, date) => {
                 ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
                 saveToLocalStorageToDo(ar);
                 updatePage();
-            } else if(statSelect.value === "In Progress") {
-                card.remove();
-                console.log("progress");
             } else {
                 card.remove();
-                console.log("complete");
             }
         }
     })

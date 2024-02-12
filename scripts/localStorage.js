@@ -62,4 +62,19 @@ const saveToLocalStorageProgress = (arr) => {
     localStorage.setItem("progress", JSON.stringify(data));
 }
 
-export {saveToLocalStorageToDo, getLocalStorageToDo, removeFromLocalStorageToDo}
+const removeFromLocalStorageProgress = (name) => {
+    let data = getLocalStorageProgress();
+    let index = 0;
+
+    for(let i = 0; i < data.length; i++){
+        console.log(data[i][0] + name)
+        if(data[i][0] === name){
+            index = i; 
+        }
+    }
+    data.splice(index, 1);
+    localStorage.setItem("progress", JSON.stringify(data));
+    
+}
+
+export {saveToLocalStorageToDo, getLocalStorageToDo, removeFromLocalStorageToDo, saveToLocalStorageProgress, removeFromLocalStorageProgress, getLocalStorageProgress}

@@ -1,5 +1,5 @@
-import { addTodo} from "./addTasks.js";
-import { saveToLocalStorageToDo, getLocalStorageToDo} from "./localStorage.js";
+import { addTodo, addProgress} from "./addTasks.js";
+import { saveToLocalStorageToDo, getLocalStorageToDo, getLocalStorageProgress, saveToLocalStorageProgress} from "./localStorage.js";
 
 let saveBtn = document.getElementById("saveBtn");
 let date = document.getElementById("date");
@@ -21,11 +21,17 @@ let completeVal = document.getElementById("completeVal");
 const updatePage = () => {
     taskRow1.innerHTML = "";
     let arr = getLocalStorageToDo();
+    let arr2 = getLocalStorageProgress();
 
     for(let i = 0; i < arr.length; i++){
-        addTodo(arr[i][0], arr[i][1], arr[i][2], arr[i][3])
+        addTodo(arr[i][0], arr[i][1], arr[i][2], arr[i][3]);
+    }
+
+    for(let i = 0; i < arr2.length; i++){
+        addProgress(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
     }
     todoVal.textContent = arr.length;
+    progressVal.textContent = arr2.length;
 
 }
 
@@ -44,10 +50,31 @@ saveBtn.addEventListener('click', () => {
             saveToLocalStorageToDo(todo);
             updatePage();
         } else {
-            alert("pro");
+            let todo = [];
+            todo.push(taskName.value);
+            todo.push(taskDescription.value);
+            todo.push(priority.value);
+            todo.push(date.value);
+            saveToLocalStorageProgress(todo);
+            updatePage();
         }
     }
 })
+
+progressTab.addEventListener('click', () => {
+    taskRow2.classList.remove("hidden");
+    progressTab.classList.add("active");
+    taskRow1.classList.add("hidden");
+    progressTab.classList.remove("active");
+})
+
+todoTab.addEventListener('click', () => {
+    taskRow1.classList.remove("hidden");
+    todoTab.classList.add("active");
+    taskRow2.classList.add("hidden");
+    progressTab.classList.remove("active");
+})
+
 
 
 
