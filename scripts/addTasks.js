@@ -184,8 +184,6 @@ const addTodo = (name, description, priority, date) => {
 
     card.append(cardBody);
 
-    
-
     taskRow1.append(card);
 
 }
