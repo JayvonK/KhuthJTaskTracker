@@ -14,6 +14,9 @@ let taskRow3 = document.getElementById("taskRow3");
 let todoTab = document.getElementById("todoTab");
 let progressTab = document.getElementById("progressTab");
 let completedTab = document.getElementById("completedTab");
+let todoVal = document.getElementById("todoVal");
+let progressVal = document.getElementById("progressVal");
+let completeVal = document.getElementById("completeVal");
 
 const updatePage = () => {
     taskRow1.innerHTML = "";
@@ -22,6 +25,8 @@ const updatePage = () => {
     for(let i = 0; i < arr.length; i++){
         addTodo(arr[i][0], arr[i][1], arr[i][2], arr[i][3])
     }
+    todoVal.textContent = arr.length;
+
 }
 
 updatePage();
@@ -47,4 +52,4 @@ saveBtn.addEventListener('click', () => {
 
 
 
-export { taskRow1, taskRow2, taskRow3 }
+export { taskRow1, taskRow2, taskRow3, updatePage }

@@ -23,70 +23,22 @@
                     <div class="row g-0">
                         <div class="navBar">
                             <div class="d-flex">
-                                <h1 class="mar">0</h1>
+                                <h1 id="todoVal" class="mar">0</h1>
                                 <h1 id="todoTab" class="underline active">TO-DO</h1>
                             </div>
                             <div class="d-flex">
-                                <h1 class="mar">0</h1>
+                                <h1 id="marVal" class="mar">0</h1>
                                 <h1 id="progressTab" class="underline">IN PROGRESS</h1>
                             </div>
                             <div class="d-flex">
-                                <h1 class="mar">0</h1>
+                                <h1 id="completeVal" class="mar">0</h1>
                                 <h1 id="completedTab" class="underline">COMPLETED</h1>
                             </div>
                         </div>
                     </div>
 
                     <div id="taskRow1" class="row taskRow">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Task Name</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Date</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal2">
-                                    Edit Task
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal2" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Task</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>Name: <input type="text"></h4>
-                                                <h4>Description: <input type="text"></h4>
-                                                <label for="status">Status: </label>
-                                                <select name="status">
-                                                    <option value="To-Do">To-Do</option>
-                                                    <option value="In Progress">In Progress</option>
-                                                    <option value="Completed">Completed</option>
-                                                </select>
-                                                <label for="priority">Priority: </label>
-                                                <select name="priority">
-                                                    <option value="Low">Low</option>
-                                                    <option value="Medium">Medium</option>
-                                                    <option value="High">High</option>
-                                                </select>
-                                                <h4>Due Date: <input type="date"></h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary"
-                                                    data-bs-dismiss="modal">Save changes</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div id="taskRow2" class="row taskRow2 hidden">
