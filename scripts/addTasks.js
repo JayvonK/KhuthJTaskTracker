@@ -102,28 +102,10 @@ const addTodo = (name, description, priority, date) => {
     modalFoot.className = "modal-footer";
     
     let saveButton = document.createElement("button");
-    saveButton.textContent = "Save Changes";
+    saveButton.textContent = "Save";
     saveButton.className = "btn btn-secondary";
     saveButton.type = "button";
 
-    saveButton.addEventListener('click', () => {
-        console.log("click");
-        if(tNameInput.value === "" || tDateInput.value === "" || tDescriptionInput.value === ""){
-            alert("Please fill in all information");
-        } else {
-            if(statSelect.value === "To-Do"){
-                cardTitle.textContent = `${tNameInput} (${priSelect.value})`;
-                cardSub.textContent = tDateInput.value;
-                cardtxt.textContent = tDescriptionInput.value;
-            } else if(statSelect.value === "In Progress") {
-                card.remove();
-                console.log("progress");
-            } else {
-                card.remove();
-                console.log("complete");
-            }
-        }
-    })
 
     let exitButton = document.createElement("button");
     exitButton.textContent = "Close";
@@ -187,5 +169,7 @@ const addTodo = (name, description, priority, date) => {
     taskRow1.append(card);
 
 }
+
+
 
 export { addTodo }

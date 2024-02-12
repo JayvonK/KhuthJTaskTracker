@@ -6,6 +6,20 @@ const getLocalStorageToDo = () => {
     }
 }
 
-const saveToLocalStorageToDo = () => {
-    
+const saveToLocalStorageToDo = (arr) => {
+    let data = getLocalStorageToDo();
+    let work = true;
+
+    for(let i = 0; i < data.length; i++){
+        if(data[i][i] === arr[i][i]){
+            work = false;
+        }
+    }
+    if(work){
+        data.push(arr);
+    }
+
+    localStorage.setItem("todo", JSON.stringify(data));
 }
+
+export {saveToLocalStorageToDo, getLocalStorageToDo}
