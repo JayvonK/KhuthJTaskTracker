@@ -23,3 +23,23 @@ body {
 .mar {
     margin-right: 25px;
 }
+
+.taskRow {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.card {
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.underline:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.active {
+    text-decoration: underline;
+}
