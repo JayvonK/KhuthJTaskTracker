@@ -20,6 +20,8 @@ let completeVal = document.getElementById("completeVal");
 
 const updatePage = () => {
     taskRow1.innerHTML = "";
+    taskRow2.innerHTML = "";
+    taskRow3.innerHTML = "";
     let arr = getLocalStorageToDo();
     let arr2 = getLocalStorageProgress();
     let arr3 = getLocalStorageCompleted();
@@ -32,7 +34,7 @@ const updatePage = () => {
         addProgress(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
     }
 
-    for(let i = 0; i < arr2.length; i++){
+    for(let i = 0; i < arr3.length; i++){
         addCompleted(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
     }
     todoVal.textContent = arr.length;
@@ -71,14 +73,27 @@ progressTab.addEventListener('click', () => {
     taskRow2.classList.remove("hidden");
     progressTab.classList.add("active");
     taskRow1.classList.add("hidden");
+    taskRow3.classList.add("hidden");
     todoTab.classList.remove("active");
+    completedTab.classList.remove("active");
 })
 
 todoTab.addEventListener('click', () => {
     taskRow1.classList.remove("hidden");
     todoTab.classList.add("active");
     taskRow2.classList.add("hidden");
+    taskRow3.classList.add("hidden");
     progressTab.classList.remove("active");
+    completedTab.classList.remove("active");
+})
+
+completedTab.addEventListener('click', () => {
+    taskRow3.classList.remove("hidden");
+    completedTab.classList.add("active");
+    taskRow2.classList.add("hidden");
+    taskRow1.classList.add("hidden");
+    progressTab.classList.remove("active");
+    todoTab.classList.remove("active");
 })
 
 

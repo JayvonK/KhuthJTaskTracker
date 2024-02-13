@@ -595,7 +595,7 @@ const addCompleted = (name, description, priority, date) => {
         }
     })
 
-    taskRow1.append(card);
+    taskRow3.append(card);
 
 }
 
