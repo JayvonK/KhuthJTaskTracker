@@ -1,5 +1,6 @@
 import { taskRow1, taskRow2, taskRow3, updatePage } from "./app.js"
 import { removeFromLocalStorageToDo, saveToLocalStorageToDo, removeFromLocalStorageProgress, saveToLocalStorageProgress, removeFromLocalStorageCompleted, saveToLocalStorageCompleted } from "./localStorage.js";
+import { priColor } from "./priorityColor.js";
 
 const addTodo = (name, description, priority, date) => {
     let tName = document.createElement("h4");
@@ -153,7 +154,7 @@ const addTodo = (name, description, priority, date) => {
     cardBody.append(modalFade);
     
     let card = document.createElement("div");
-    card.className = "card";
+    card.className = "card " + priColor(priority);
     card.style = "width: 18rem;";
 
     card.append(cardBody);
@@ -177,6 +178,7 @@ const addTodo = (name, description, priority, date) => {
                 saveToLocalStorageToDo(ar);
                 updatePage();
             } else if(statSelect.value === "In Progress") {
+                removeFromLocalStorageToDo(name);
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
@@ -185,6 +187,7 @@ const addTodo = (name, description, priority, date) => {
                 saveToLocalStorageProgress(ar);
                 updatePage();
             } else {
+                removeFromLocalStorageToDo(name);
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
@@ -353,7 +356,7 @@ const addProgress = (name, description, priority, date) => {
     cardBody.append(modalFade);
     
     let card = document.createElement("div");
-    card.className = "card";
+    card.className = "card " + priColor(priority);
     card.style = "width: 18rem;";
 
     card.append(cardBody);
@@ -377,6 +380,7 @@ const addProgress = (name, description, priority, date) => {
                 saveToLocalStorageProgress(ar);
                 updatePage();
             } else if(statSelect.value === "To-Do") {
+                removeFromLocalStorageProgress(name);
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
@@ -385,6 +389,7 @@ const addProgress = (name, description, priority, date) => {
                 saveToLocalStorageToDo(ar);
                 updatePage();
             } else {
+                removeFromLocalStorageProgress(name);
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
@@ -552,7 +557,7 @@ const addCompleted = (name, description, priority, date) => {
     cardBody.append(modalFade);
     
     let card = document.createElement("div");
-    card.className = "card";
+    card.className = "card " + priColor(priority);
     card.style = "width: 18rem;";
 
     card.append(cardBody);
@@ -576,6 +581,7 @@ const addCompleted = (name, description, priority, date) => {
                 saveToLocalStorageCompleted(ar);
                 updatePage();
             } else if(statSelect.value === "In Progress") {
+                removeFromLocalStorageCompleted(name);
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
@@ -584,6 +590,7 @@ const addCompleted = (name, description, priority, date) => {
                 saveToLocalStorageProgress(ar);
                 updatePage();
             } else {
+                removeFromLocalStorageCompleted(name);
                 let ar = [];
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;

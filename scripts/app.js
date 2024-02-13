@@ -35,7 +35,7 @@ const updatePage = () => {
     }
 
     for(let i = 0; i < arr3.length; i++){
-        addCompleted(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
+        addCompleted(arr3[i][0], arr3[i][1], arr3[i][2], arr3[i][3]);
     }
     todoVal.textContent = arr.length;
     progressVal.textContent = arr2.length;
