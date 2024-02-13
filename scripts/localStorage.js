@@ -77,4 +77,44 @@ const removeFromLocalStorageProgress = (name) => {
     
 }
 
-export {saveToLocalStorageToDo, getLocalStorageToDo, removeFromLocalStorageToDo, saveToLocalStorageProgress, removeFromLocalStorageProgress, getLocalStorageProgress}
+const getLocalStorageCompleted = () => {
+    if(localStorage.getItem("completed") === null){
+        return [];
+    } else {
+        return JSON.parse(localStorage.getItem("completed"));
+    }
+}
+
+
+const saveToLocalStorageCompleted = (arr) => {
+    let data = getLocalStorageCompleted();
+    let work = true;
+
+    for(let i = 0; i < data.length; i++){
+        if(data[i][i] === arr[i][i]){
+            work = false;
+        }
+    }
+    if(work){
+        data.push(arr);
+    }
+
+    localStorage.setItem("completed", JSON.stringify(data));
+}
+
+const removeFromLocalStorageCompleted = (name) => {
+    let data = getLocalStorageCompleted();
+    let index = 0;
+
+    for(let i = 0; i < data.length; i++){
+        console.log(data[i][0] + name)
+        if(data[i][0] === name){
+            index = i; 
+        }
+    }
+    data.splice(index, 1);
+    localStorage.setItem("completed", JSON.stringify(data));
+    
+}
+
+export {saveToLocalStorageToDo, getLocalStorageToDo, removeFromLocalStorageToDo, saveToLocalStorageProgress, removeFromLocalStorageProgress, getLocalStorageProgress, getLocalStorageCompleted, removeFromLocalStorageCompleted, saveToLocalStorageCompleted}
