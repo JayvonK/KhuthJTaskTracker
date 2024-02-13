@@ -2,7 +2,7 @@ import { taskRow1, taskRow2, taskRow3, updatePage } from "./app.js"
 import { removeFromLocalStorageToDo, saveToLocalStorageToDo, removeFromLocalStorageProgress, saveToLocalStorageProgress, removeFromLocalStorageCompleted, saveToLocalStorageCompleted } from "./localStorage.js";
 import { priColor } from "./priorityColor.js";
 
-const addTodo = (name, description, priority, date) => {
+const addTodo = (name, description, priority, date, stat) => {
     let tName = document.createElement("h4");
     tName.textContent = "Name: ";
 
@@ -140,10 +140,6 @@ const addTodo = (name, description, priority, date) => {
     edit.className = "btn btn-primary";
     edit.textContent = "Edit Task";
 
-    edit.addEventListener('click', () => {
-        modalFade.className = "absolute bgwhite";
-    })
-
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
 
@@ -161,6 +157,15 @@ const addTodo = (name, description, priority, date) => {
     
     exitButton.addEventListener('click', () => {
         modalFade.className = "modal absolute bgwhite";
+    })
+    
+    edit.addEventListener('click', () => {
+        modalFade.className = "absolute bgwhite";
+        tNameInput.value = name;
+        tDescriptionInput.value = description;
+        tDateInput.value = date;
+        priSelect.value = priority;
+        statSelect.value = stat;
     })
 
     saveButton.addEventListener('click', () => {
@@ -174,7 +179,7 @@ const addTodo = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageToDo(ar);
                 updatePage();
             } else if(statSelect.value === "In Progress") {
@@ -183,7 +188,7 @@ const addTodo = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageProgress(ar);
                 updatePage();
             } else {
@@ -192,7 +197,7 @@ const addTodo = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageCompleted(ar);
                 updatePage();
             }
@@ -204,7 +209,7 @@ const addTodo = (name, description, priority, date) => {
 }
 
 
-const addProgress = (name, description, priority, date) => {
+const addProgress = (name, description, priority, date, stat) => {
     let tName = document.createElement("h4");
     tName.textContent = "Name: ";
 
@@ -342,9 +347,6 @@ const addProgress = (name, description, priority, date) => {
     edit.className = "btn btn-primary";
     edit.textContent = "Edit Task";
 
-    edit.addEventListener('click', () => {
-        modalFade.className = "absolute bgwhite";
-    })
 
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
@@ -363,6 +365,15 @@ const addProgress = (name, description, priority, date) => {
     
     exitButton.addEventListener('click', () => {
         modalFade.className = "modal absolute bgwhite";
+    })
+
+    edit.addEventListener('click', () => {
+        modalFade.className = "absolute bgwhite";
+        tNameInput.value = name;
+        tDescriptionInput.value = description;
+        tDateInput.value = date;
+        priSelect.value = priority;
+        statSelect.value = stat;
     })
 
     saveButton.addEventListener('click', () => {
@@ -376,7 +387,7 @@ const addProgress = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageProgress(ar);
                 updatePage();
             } else if(statSelect.value === "To-Do") {
@@ -385,7 +396,7 @@ const addProgress = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageToDo(ar);
                 updatePage();
             } else {
@@ -394,7 +405,7 @@ const addProgress = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageCompleted(ar);
                 updatePage();
             }
@@ -405,7 +416,7 @@ const addProgress = (name, description, priority, date) => {
 
 }
 
-const addCompleted = (name, description, priority, date) => {
+const addCompleted = (name, description, priority, date, stat) => {
     let tName = document.createElement("h4");
     tName.textContent = "Name: ";
 
@@ -543,10 +554,6 @@ const addCompleted = (name, description, priority, date) => {
     edit.className = "btn btn-primary";
     edit.textContent = "Edit Task";
 
-    edit.addEventListener('click', () => {
-        modalFade.className = "absolute bgwhite";
-    })
-
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
 
@@ -566,6 +573,15 @@ const addCompleted = (name, description, priority, date) => {
         modalFade.className = "modal absolute bgwhite";
     })
 
+    edit.addEventListener('click', () => {
+        modalFade.className = "absolute bgwhite";
+        tNameInput.value = name;
+        tDescriptionInput.value = description;
+        tDateInput.value = date;
+        priSelect.value = priority;
+        statSelect.value = stat;
+    })
+
     saveButton.addEventListener('click', () => {
         console.log("click");
         if(tNameInput.value === "" || tDateInput.value === "" || tDescriptionInput.value === ""){
@@ -577,7 +593,7 @@ const addCompleted = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageCompleted(ar);
                 updatePage();
             } else if(statSelect.value === "In Progress") {
@@ -586,7 +602,7 @@ const addCompleted = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value );
                 saveToLocalStorageProgress(ar);
                 updatePage();
             } else {
@@ -595,7 +611,7 @@ const addCompleted = (name, description, priority, date) => {
                 cardTitle.textContent = `${tNameInput.value} (${priSelect.value})`;
                 cardSub.textContent = tDateInput.value;
                 cardtxt.textContent = tDescriptionInput.value;
-                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value );
+                ar.push(tNameInput.value, tDescriptionInput.value, priSelect.value ,tDateInput.value, statSelect.value);
                 saveToLocalStorageToDo(ar);
                 updatePage();
             }

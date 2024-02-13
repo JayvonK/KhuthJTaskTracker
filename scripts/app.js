@@ -27,15 +27,15 @@ const updatePage = () => {
     let arr3 = getLocalStorageCompleted();
 
     for(let i = 0; i < arr.length; i++){
-        addTodo(arr[i][0], arr[i][1], arr[i][2], arr[i][3]);
+        addTodo(arr[i][0], arr[i][1], arr[i][2], arr[i][3], arr[i][4]);
     }
 
     for(let i = 0; i < arr2.length; i++){
-        addProgress(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
+        addProgress(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3], arr2[i][4]);
     }
 
     for(let i = 0; i < arr3.length; i++){
-        addCompleted(arr3[i][0], arr3[i][1], arr3[i][2], arr3[i][3]);
+        addCompleted(arr3[i][0], arr3[i][1], arr3[i][2], arr3[i][3], arr3[i][4]);
     }
     todoVal.textContent = arr.length;
     progressVal.textContent = arr2.length;
@@ -55,6 +55,7 @@ saveBtn.addEventListener('click', () => {
             todo.push(taskDescription.value);
             todo.push(priority.value);
             todo.push(date.value);
+            todo.push(stat.value);
             saveToLocalStorageToDo(todo);
             updatePage();
         } else {
@@ -63,6 +64,7 @@ saveBtn.addEventListener('click', () => {
             todo.push(taskDescription.value);
             todo.push(priority.value);
             todo.push(date.value);
+            todo.push(stat.value);
             saveToLocalStorageProgress(todo);
             updatePage();
         }
