@@ -1,5 +1,5 @@
-import { addTodo, addProgress} from "./addTasks.js";
-import { saveToLocalStorageToDo, getLocalStorageToDo, getLocalStorageProgress, saveToLocalStorageProgress} from "./localStorage.js";
+import { addTodo, addProgress, addCompleted} from "./addTasks.js";
+import { saveToLocalStorageToDo, getLocalStorageToDo, getLocalStorageProgress, saveToLocalStorageProgress, getLocalStorageCompleted, saveToLocalStorageCompleted} from "./localStorage.js";
 
 let saveBtn = document.getElementById("saveBtn");
 let date = document.getElementById("date");
@@ -22,6 +22,7 @@ const updatePage = () => {
     taskRow1.innerHTML = "";
     let arr = getLocalStorageToDo();
     let arr2 = getLocalStorageProgress();
+    let arr3 = getLocalStorageCompleted();
 
     for(let i = 0; i < arr.length; i++){
         addTodo(arr[i][0], arr[i][1], arr[i][2], arr[i][3]);
@@ -30,8 +31,13 @@ const updatePage = () => {
     for(let i = 0; i < arr2.length; i++){
         addProgress(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
     }
+
+    for(let i = 0; i < arr2.length; i++){
+        addCompleted(arr2[i][0], arr2[i][1], arr2[i][2], arr2[i][3]);
+    }
     todoVal.textContent = arr.length;
     progressVal.textContent = arr2.length;
+    completeVal.textContent = arr3.length;
 
 }
 
